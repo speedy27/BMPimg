@@ -153,10 +153,15 @@ namespace pbscientfique
             return result;
         }
 
-            public byte[] Convertir_Int_To_Endian(int val)
-        {
-            return BitConverter.GetBytes(val);
-        }
+        public static byte[] ConvertIntToEndian(int val, int length)
+      {
+      byte[] result = new byte[length];
+      for (int i = 0; i < length; i++)
+      {
+          result[i] = (byte)((val >> (8 * i)) & 0xFF);
+      }
+      return result;
+  }
 
 
         public void rotation90()
